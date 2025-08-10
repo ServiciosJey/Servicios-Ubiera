@@ -245,7 +245,7 @@
     </a>
 
     <nav class="nav__actions">
-      <a class="btn btn--ghost btn--xs" href="#horario">Horario</a>
+      <a class="btn btn--ghost btn--xs" href="#contacto">Horario</a>
 
       <button id="themeToggle" class="btn btn--ghost btn--icon" aria-label="Cambiar tema">
         🌓
@@ -629,28 +629,9 @@ const onScrollHdr = ()=> {
 onScrollHdr();
 window.addEventListener('scroll', onScrollHdr, {passive:true});
 
-// Toggle de tema (si ya lo tienes, puedes omitir este bloque)
-(() => {
-  const root = document.documentElement;
-  const saved = localStorage.getItem('su-theme');
-  if(saved) root.setAttribute('data-theme', saved);
-  const tBtn = document.getElementById('themeToggle');
-  if (tBtn) tBtn.addEventListener('click', () => {
-    const t = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-    root.setAttribute('data-theme', t);
-    localStorage.setItem('su-theme', t);
-  });
-})();
-
   // Parar cuando el usuario pone el dedo encima aunque no arrastre
   ['mouseenter','focusin'].forEach(ev=>carousel.addEventListener(ev, stop));
   ['mouseleave','focusout'].forEach(ev=>carousel.addEventListener(ev, start));
 </script>
 </body>
 </html>
-
-
-
-
-
-
