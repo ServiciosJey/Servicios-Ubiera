@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Servicios Ubiera — Asesoría Contable, Financiera y Fiscal</title>
+<meta name="description" content="Asesoría contable, financiera y fiscal para pymes y emprendedores. Igualas contables y fiscales. Formatos 606-607-608-609, TSS/SIRLA/DGII y Facturación Electrónica.">
+<meta name="theme-color" content="#0E5A6A">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --bg:#ffffff;
+    --paper:#F5F0EA;
+    --ink:#222222;
+    --muted:#5f6c72;
+    --primary:#0E5A6A;
+    --primary-2:#66C299;
+    --accent:#8FD6B3;
+    --line:rgba(20,20,20,.08);
+
+    --radius:18px;
+    --shadow:0 10px 30px rgba(0,0,0,.08);
+    --shadow-2:0 8px 22px rgba(14,90,106,.18);
+    --trans:.35s cubic-bezier(.2,.8,.2,1);
+  }
+
+  /* Dark theme */
+  :root[data-theme="dark"]{
+    --bg:#0f1113;
+    --paper:#161a1d;
+    --ink:#e9eef1;
+    --muted:#9aa7ad;
+    --primary:#66C299;
+    --primary-2:#8FD6B3;
+    --accent:#0E5A6A;
+    --line:rgba(255,255,255,.08);
+    --shadow:0 10px 30px rgba(0,0,0,.45);
+    --shadow-2:0 8px 22px rgba(0,0,0,.5);
+  }
+
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:Poppins,system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue","Noto Sans","Liberation Sans",Arial,"Apple Color Emoji","Segoe UI Emoji";}
+
+  a{color:inherit;text-decoration:none}
+  img{max-width:100%;display:block}
+
+  .container{width:min(1100px,92%);margin:auto}
+
+  /* Header */
+  header{
+    position:sticky;top:0;z-index:50;background:rgba(255,255,255,.7);
+    backdrop-filter: blur(8px);
+    border-bottom:1px solid var(--line)
+  }
+  :root[data-theme="dark"] header{background:rgba(15,17,19,.6)}
+  .nav{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:12px 0}
+  .brand{display:flex;align-items:center;gap:12px}
+  .brand img{width:40px;height:40px;border-radius:10px;box-shadow:var(--shadow)}
+  .brand b{font-family:"Playfair Display",serif;font-size:20px;letter-spacing:.2px}
+  .nav a.btn{
+    padding:10px 14px;border:1px solid var(--line);border-radius:999px;font-weight:600
+  }
+  .theme{
+    display:flex;align-items:center;gap:8px
+  }
+  .theme button{
+    border:1px solid var(--line);background:var(--paper);color:var(--ink);
+    padding:10px 12px;border-radius:12px;cursor:pointer;transition:transform .12s ease, background var(--trans)
+  }
+  .theme button:hover{transform:translateY(-1px)}
+  .cta{
+    background:linear-gradient(135deg,var(--primary),var(--primary-2));
+    color:#fff;border:none;box-shadow:var(--shadow-2)
+  }
+
+  /* Hero */
+  .hero{display:grid;grid-template-columns:1.2fr .8fr;gap:24px;align-items:center;padding:48px 0}
+  .pill{
+    display:inline-flex;gap:8px;align-items:center;background:var(--paper);padding:8px 12px;border-radius:999px;border:1px solid var(--line);font-size:12px;color:var(--muted)
+  }
+  h1{font-family:"Playfair Display",serif;font-size:clamp(28px,5vw,46px);line-height:1.1;margin:14px 0}
+  .lead{font-size:clamp(15px,2.5vw,18px);color:var(--muted);margin:10px 0 18px}
+  .hero-card{
+    background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow)
+  }
+  .hero-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
+  .btn{display:inline-flex;align-items:center;gap:10px;padding:12px 16px;border-radius:12px;font-weight:600;border:1px solid var(--line);transition:transform .12s ease, background var(--trans)}
+  .btn:hover{transform:translateY(-1px)}
+  .ghost{background:transparent}
+
+  /* Section */
+  section{padding:48px 0}
+  .section-title{display:flex;align-items:end;justify-content:space-between;margin-bottom:18px}
+  .section-title h2{font-family:"Playfair Display",serif;font-size:clamp(22px,4vw,34px);margin:0}
+  .section-title p{color:var(--muted);margin:0}
+
+  /* Benefits */
+  .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  .card{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);padding:18px;box-shadow:var(--shadow)}
+  .card h3{margin:6px 0 8px;font-size:18px}
+  .muted{color:var(--muted)}
+
+  /* Services Carousel */
+  .carousel-wrap{position:relative}
+  .carousel{
+    overflow:hidden;border-radius:var(--radius);border:1px solid var(--line);background:var(--paper);box-shadow:var(--shadow)
+  }
+  .track{
+    display:flex;transition:transform .55s var(--trans);will-change:transform
+  }
+  .slide{
+    min-width:100%;display:grid;grid-template-columns:1.2fr .8fr;gap:18px;align-items:center;padding:18px
+  }
+  .slide img{width:100%;height:260px;object-fit:cover;border-radius:14px}
+  .badge{display:inline-flex;align-items:center;gap:8px;font-size:12px;color:#fff;background:var(--primary);padding:6px 10px;border-radius:999px}
+  .slide h3{margin:10px 0 8px}
+  .slide p{color:var(--muted);margin:0}
+  .dots{display:flex;gap:8px;justify-content:center;margin-top:10px}
+  .dot{width:8px;height:8px;border-radius:50%;background:var(--line)}
+  .dot.active{background:linear-gradient(135deg,var(--primary),var(--primary-2))}
+  .ctrl{
+    position:absolute;inset:0;display:flex;justify-content:space-between;align-items:center;pointer-events:none
+  }
+  .ctrl button{
+    pointer-events:auto;border:none;background:rgba(0,0,0,.0);color:var(--ink);
+    width:44px;height:44px;border-radius:12px;display:grid;place-items:center;transition:background .2s
+  }
+  .ctrl button:hover{background:rgba(0,0,0,.05)}
+  :root[data-theme="dark"] .ctrl button:hover{background:rgba(255,255,255,.06)}
+
+  /* Plans */
+  .plans{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  .plan .head{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+  .plan ul{margin:10px 0 0;padding-left:18px;line-height:1.65;color:var(--muted)}
+
+  /* About */
+  .about{display:grid;grid-template-columns:.9fr 1.1fr;gap:24px;align-items:center}
+  .about img{border-radius:18px;box-shadow:var(--shadow)}
+  .about .bio{background:var(--paper);border:1px solid var(--line);padding:18px;border-radius:var(--radius)}
+
+  /* FAQ */
+  details{background:var(--paper);border:1px solid var(--line);border-radius:14px;padding:14px}
+  details+details{margin-top:10px}
+  summary{cursor:pointer;font-weight:600}
+
+  /* Contact */
+  .contact{display:grid;grid-template-columns:1.2fr .8fr;gap:18px;align-items:center}
+  .contact .block{background:var(--paper);border:1px solid var(--line);padding:18px;border-radius:var(--radius)}
+  .schedule{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+  .schedule div{background:rgba(0,0,0,.03);border:1px solid var(--line);border-radius:12px;padding:10px}
+  :root[data-theme="dark"] .schedule div{background:rgba(255,255,255,.03)}
+
+  /* Footer */
+  footer{padding:24px 0;border-top:1px solid var(--line);color:var(--muted);font-size:14px}
+
+  /* WhatsApp sticky */
+  .wa{
+    position:fixed;right:18px;bottom:18px;z-index:60;display:flex;align-items:center;gap:10px;
+    background:linear-gradient(135deg,#25D366,#128C7E);color:#fff;padding:12px 16px;border-radius:999px;
+    box-shadow:0 10px 30px rgba(18,140,126,.45);font-weight:700
+  }
+  .wa svg{width:20px;height:20px}
+
+  /* Animations & reveal */
+  .reveal{opacity:0;transform:translateY(18px);transition:opacity .6s ease,transform .6s ease}
+  .reveal.show{opacity:1;transform:none}
+  @keyframes floatY{from{transform:translateY(0)}50%{transform:translateY(-8px)}to{transform:translateY(0)}}
+  .float{animation:floatY 4s ease-in-out infinite}
+
+  /* Responsive */
+  @media (max-width:900px){
+    .hero,.slide,.about,.contact{grid-template-columns:1fr}
+    .slide img{height:200px}
+    .grid-3{grid-template-columns:1fr 1fr}
+    .plans{grid-template-columns:1fr}
+  }
+  @media (max-width:560px){
+    .grid-3{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="brand">
+        <img src="https://instagram.fsdq6-1.fna.fbcdn.net/v/t51.2885-19/248984051_3047610508852934_4065540886122877043_n.jpg?stp=dst-jpg_s150x150_tt6&_nc_ht=instagram.fsdq6-1.fna.fbcdn.net&_nc_cat=102&ccb=7-5&oh=00_AfUM78dApf6TbsT4hbGhwpRWu_faITxbDah3KUmZmKpEcg&oe=689E866B" alt="Logo Servicios Ubiera" onerror="this.src='https://source.unsplash.com/64x64/?accounting,logo'">
+        <b>Servicios Ubiera</b>
+      </div>
+      <div class="theme">
+        <a class="btn ghost" href="#contacto">Horario</a>
+        <button id="themeToggle" title="Tema claro/oscuro">🌓</button>
+        <a class="btn cta" href="https://wa.me/18494795252" target="_blank" rel="noopener">Cotizar por WhatsApp</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="container hero">
+    <div>
+      <span class="pill reveal">Asesoría Contable, Financiera y Fiscal</span>
+      <h1 class="reveal" style="transition-delay:.08s">Haz de tu contabilidad <span style="color:var(--primary)">tu ventaja competitiva</span>.</h1>
+      <p class="lead reveal" style="transition-delay:.15s">Igualas contables y fiscales, implementación de sistemas, formatos DGII (606–609), TSS/SIRLA/DGII y Facturación Electrónica para pymes y emprendedores.</p>
+      <div class="hero-actions reveal" style="transition-delay:.22s">
+        <a class="btn cta" href="https://wa.me/18494795252" target="_blank" rel="noopener">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="18" height="18" fill="currentColor"><path d="M20.52 3.48A11.93 11.93 0 0 0 12.05 0C5.46.03.11 5.38.13 11.97c0 2.11.55 4.08 1.52 5.8L0 24l6.39-1.64a12 12 0 0 0 5.66 1.45h.01c6.59 0 11.94-5.35 11.95-11.94A11.9 11.9 0 0 0 20.52 3.48ZM12.06 22a9.96 9.96 0 0 1-5.08-1.4l-.36-.21-3.79.97 1.01-3.69-.24-.38A10 10 0 1 1 22.06 12 10 10 0 0 1 12.06 22Zm5.48-7.55c-.3-.15-1.78-.88-2.06-.98-.28-.1-.49-.15-.7.15-.2.3-.8.98-.98 1.18-.18.2-.36.22-.66.07-.3-.15-1.24-.45-2.36-1.43-.87-.77-1.46-1.72-1.64-2.01-.17-.3-.02-.46.13-.61.13-.12.3-.31.45-.46.15-.15.2-.25.3-.42.1-.18.05-.33-.02-.47-.07-.15-.7-1.68-.96-2.3-.25-.6-.5-.52-.7-.53l-.6-.01c-.2 0-.47.07-.72.33-.25.26-.95.93-.95 2.27 0 1.33.97 2.62 1.1 2.8.15.2 1.9 2.9 4.6 4.05.64.28 1.14.45 1.53.57.64.2 1.22.17 1.68.1.52-.08 1.78-.73 2.03-1.43.25-.7.25-1.3.17-1.43-.07-.13-.27-.2-.57-.35Z"/></svg>
+          Cotizar por WhatsApp
+        </a>
+        <a class="btn ghost" href="#servicios">Ver servicios</a>
+      </div>
+    </div>
+    <div class="hero-card float">
+      <img src="https://source.unsplash.com/800x540/?finance,team,office" alt="Equipo contable" style="border-radius:12px;margin-bottom:12px">
+      <div class="muted" style="font-size:14px">“La clave para crecer está en los números bien gestionados.”</div>
+    </div>
+  </section>
+
+  <!-- BENEFICIOS -->
+  <section class="container">
+    <div class="section-title">
+      <h2 class="reveal">Beneficios para tu negocio</h2>
+      <p class="muted reveal">Ahorra tiempo, evita multas y toma decisiones con datos reales.</p>
+    </div>
+    <div class="grid-3">
+      <div class="card reveal"><h3>Orden y cumplimiento</h3><p class="muted">Declaraciones a tiempo (DGII, TSS/SIRLA), control de documentos y cero estrés.</p></div>
+      <div class="card reveal"><h3>Acompañamiento experto</h3><p class="muted">Atención cercana, personalizada y alineada a tu sector.</p></div>
+      <div class="card reveal"><h3>Eficiencia y ahorro</h3><p class="muted">Procesos estandarizados, automatización y optimización de costos.</p></div>
+    </div>
+  </section>
+
+  <!-- SERVICIOS (CARRUSEL) -->
+  <section id="servicios" class="container">
+    <div class="section-title">
+      <h2 class="reveal">Servicios</h2>
+      <p class="muted reveal">Desliza o deja que el carrusel avance automáticamente.</p>
+    </div>
+
+    <div class="carousel-wrap reveal">
+      <div class="carousel">
+        <div class="track" id="track">
+          <!-- Slides (se clonan por JS para hacerlo circular) -->
+          <article class="slide">
+            <img src="https://source.unsplash.com/900x600/?accounting,advisor" alt="Asesoría contable y fiscal">
+            <div>
+              <span class="badge">Asesoría</span>
+              <h3>Asesoría contable y fiscal</h3>
+              <p>Diagnóstico, cumplimiento y estrategia para que tu negocio opere en orden y sin sorpresas.</p>
+            </div>
+          </article>
+
+          <article class="slide">
+            <img src="https://source.unsplash.com/900x600/?financial,statement" alt="Estados financieros">
+            <div>
+              <span class="badge">Finanzas</span>
+              <h3>Elaboración de estados financieros</h3>
+              <p>EEFF precisos para decisiones, bancos e inversionistas.</p>
+            </div>
+          </article>
+
+          <article class="slide">
+            <img src="https://source.unsplash.com/900x600/?audit,finance" alt="Auditoría">
+            <div>
+              <span class="badge">Control</span>
+              <h3>Auditoría contable y fiscal</h3>
+              <p>Revisión independiente, hallazgos y planes de mejora.</p>
+            </div>
+          </article>
+
+          <article class="slide">
+            <img src="https://source.unsplash.com/900x600/?tax,planning" alt="Planificación fiscal">
+            <div>
+              <span class="badge">Fiscal</span>
+              <h3>Planificación fiscal</h3>
+              <p>Estrategias para optimizar tu carga impositiva cumpliendo la norma.</p>
+            </div>
+          </article>
+
+          <article class="slide">
+            <img src="https://source.unsplash.com/900x600/?erp,software" alt="Sistemas contables">
+            <div>
+              <span class="badge">Sistemas</span>
+              <h3>Implementación de sistemas contables</h3>
+              <p>Selección, parametrización y entrenamiento del equipo.</p>
+            </div>
+          </article>
+
+          <article class="slide">
+            <img src="https://source.unsplash.com/900x600/?business,registration" alt="Constitución SRL/EIRL">
+            <div>
+              <span class="badge">Empresas</span>
+              <h3>Constitución de compañías (SRL / EIRL)</h3>
+              <p>Nombre comercial, estatutos, registro mercantil, RNC y más.</p>
+            </div>
+          </article>
+
+          <article class="slide">
+            <img src="https://source.unsplash.com/900x600/?analytics,chart" alt="Análisis financiero">
+            <div>
+              <span class="badge">Análisis</span>
+              <h3>Análisis financiero</h3>
+              <p>Indicadores, flujo de caja y tableros para decisiones inteligentes.</p>
+            </div>
+          </article>
+
+          <article class="slide">
+            <img src="https://source.unsplash.com/900x600/?document,office" alt="TSS, SIRLA y Oficina Virtual DGII">
+            <div>
+              <span class="badge">Gestión</span>
+              <h3>Manejo de TSS, SIRLA y Oficina Virtual DGII</h3>
+              <p>Altas/bajas, conciliaciones y reportes al día.</p>
+            </div>
+          </article>
+
+          <article class="slide">
+            <img src="https://source.unsplash.com/900x600/?invoice,tax" alt="Formatos DGII 606-607-608-609">
+            <div>
+              <span class="badge">DGII</span>
+              <h3>Formatos 606 · 607 · 608 · 609</h3>
+              <p>Registros y envíos correctos para evitar contingencias.</p>
+            </div>
+          </article>
+
+          <article class="slide">
+            <img src="https://source.unsplash.com/900x600/?e-invoice,computer" alt="Facturación electrónica">
+            <div>
+              <span class="badge">FE</span>
+              <h3>Facturación electrónica</h3>
+              <p>Implementación y mejores prácticas: seguridad, trazabilidad y ahorro.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+
+      <div class="ctrl">
+        <button id="prev" aria-label="Anterior">◀</button>
+        <button id="next" aria-label="Siguiente">▶</button>
+      </div>
+      <div class="dots" id="dots" aria-hidden="true"></div>
+    </div>
+  </section>
+
+  <!-- PLANES -->
+  <section class="container">
+    <div class="section-title">
+      <h2 class="reveal">Igualas que se adaptan a ti</h2>
+      <p class="muted reveal">Acompañamiento continuo sin mostrar precios en web.</p>
+    </div>
+    <div class="plans">
+      <div class="card plan reveal">
+        <div class="head"><span class="badge">Full</span><h3>Iguala Full</h3></div>
+        <ul>
+          <li>Gestión completa contable y fiscal</li>
+          <li>Informes y declaraciones</li>
+          <li>Representación ante la administración pública</li>
+          <li>Atención permanente</li>
+        </ul>
+      </div>
+      <div class="card plan reveal">
+        <div class="head"><span class="badge">Contable</span><h3>Iguala Contable</h3></div>
+        <ul>
+          <li>Llevamiento integral de contabilidad</li>
+          <li>Elaboración de informes financieros</li>
+          <li>Asesoría contable personalizada</li>
+        </ul>
+      </div>
+      <div class="card plan reveal">
+        <div class="head"><span class="badge">Fiscal</span><h3>Iguala Fiscal</h3></div>
+        <ul>
+          <li>Cumplimiento y declaraciones fiscales</li>
+          <li>Asesoría fiscal estratégica</li>
+          <li>Prevención de riesgos y multas</li>
+        </ul>
+      </div>
+    </div>
+    <div style="margin-top:14px" class="reveal">
+      <a class="btn cta" href="https://wa.me/18494795252" target="_blank" rel="noopener">Cotizar por WhatsApp</a>
+    </div>
+  </section>
+
+  <!-- SOBRE MÍ -->
+  <section class="container">
+    <div class="section-title">
+      <h2 class="reveal">Conoce a Daisy Ubiera</h2>
+      <p class="muted reveal">+10 años de experiencia en contabilidad e impuestos</p>
+    </div>
+    <div class="about">
+      <img class="reveal" style="aspect-ratio:4/3;object-fit:cover"
+           src="https://instagram.fsdq6-1.fna.fbcdn.net/v/t51.29350-15/449687205_460106016755751_7158859507705071933_n.webp?stp=dst-jpg_e35_tt6&_nc_ht=instagram.fsdq6-1.fna.fbcdn.net&_nc_cat=103&ccb=7-5&oh=00_AfU2B7WTGkm3JL37cFT_0_I7coWyuDRlCmDFJb1r42phNA&oe=689E7DCB"
+           alt="Daisy Ubiera" onerror="this.src='https://source.unsplash.com/900x675/?portrait,professional'">
+      <div class="bio reveal">
+        <p>Soy <b>Daisy Ubiera</b>, Licenciada en Contabilidad y Auditoría, con una Maestría en Dirección de Finanzas y cursando una Maestría en Dirección y Gestión Tributaria.</p>
+        <p>Ayudo a pymes y emprendedores a mantener su contabilidad organizada, cumplir con DGII/TSS/SIRLA y tomar decisiones con información financiera confiable.</p>
+        <div class="hero-actions"><a class="btn cta" href="https://wa.me/18494795252" target="_blank" rel="noopener">Hablemos por WhatsApp</a></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="container">
+    <div class="section-title">
+      <h2 class="reveal">Preguntas frecuentes</h2>
+      <p class="muted reveal">Transparencia y claridad para comenzar sin dudas.</p>
+    </div>
+    <details class="reveal"><summary>¿Atienden presencial y virtual?</summary><p>Sí. Atendemos de forma presencial y virtual. Cobertura nacional.</p></details>
+    <details class="reveal"><summary>¿Horarios de atención?</summary><p>Lunes a viernes de 8:00 a 20:00 · Sábados y domingos de 8:00 a 17:00.</p></details>
+    <details class="reveal"><summary>¿Manejan formatos 606/607/608/609?</summary><p>Sí, preparamos y enviamos correctamente para evitar contingencias.</p></details>
+    <details class="reveal"><summary>¿Implementan Facturación Electrónica?</summary><p>Sí, te guiamos en todo el proceso y buenas prácticas.</p></details>
+  </section>
+
+  <!-- CONTACTO -->
+  <section id="contacto" class="container">
+    <div class="section-title">
+      <h2 class="reveal">Contacto</h2>
+      <p class="muted reveal">Estamos listos para ayudarte.</p>
+    </div>
+    <div class="contact">
+      <div class="block reveal">
+        <h3>Escríbenos</h3>
+        <p class="muted">WhatsApp oficial</p>
+        <a class="btn cta" href="https://wa.me/18494795252" target="_blank" rel="noopener">(+1) 849 479 5252</a>
+      </div>
+      <div class="block reveal">
+        <h3>Horario</h3>
+        <div class="schedule">
+          <div><b>L–V</b><br>8:00 am – 8:00 pm</div>
+          <div><b>S–D</b><br>8:00 am – 5:00 pm</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      © <span id="y"></span> Servicios Ubiera · Asesoría Contable, Financiera y Fiscal
+    </div>
+  </footer>
+
+  <!-- WhatsApp Sticky -->
+  <a class="wa" href="https://wa.me/18494795252" target="_blank" rel="noopener" aria-label="Cotizar por WhatsApp">
+    <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.52 3.48A11.93 11.93 0 0 0 12.05 0C5.46.03.11 5.38.13 11.97c0 2.11.55 4.08 1.52 5.8L0 24l6.39-1.64a12 12 0 0 0 5.66 1.45h.01c6.59 0 11.94-5.35 11.95-11.94A11.9 11.9 0 0 0 20.52 3.48Z"/></svg>
+    Cotizar
+  </a>
+
+<script>
+  // Año footer
+  document.getElementById('y').textContent = new Date().getFullYear();
+
+  // ===== Theme toggle con persistencia =====
+  const root = document.documentElement;
+  const saved = localStorage.getItem('su-theme');
+  if(saved){ root.setAttribute('data-theme', saved); }
+  document.getElementById('themeToggle').addEventListener('click', ()=>{
+    const t = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    root.setAttribute('data-theme', t);
+    localStorage.setItem('su-theme', t);
+  });
+
+  // ===== Reveal on scroll =====
+  const io = new IntersectionObserver((entries)=>{
+    entries.forEach(e=>{
+      if(e.isIntersecting){ e.target.classList.add('show'); io.unobserve(e.target); }
+    })
+  },{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+  // ===== Carrusel circular con autoplay (2s) =====
+  const track = document.getElementById('track');
+  const slides = Array.from(track.children);
+  const total = slides.length;
+
+  // Clones para looping
+  const firstClone = slides[0].cloneNode(true);
+  const lastClone  = slides[total-1].cloneNode(true);
+  track.appendChild(firstClone);
+  track.insertBefore(lastClone, slides[0]);
+
+  let index = 1; // arrancamos en el primer slide real
+  const width = ()=> track.children[0].getBoundingClientRect().width;
+  const setPos = ()=> track.style.transform = `translateX(-${index * width()}px)`;
+  window.addEventListener('resize', setPos);
+  setPos();
+
+  // Paginación
+  const dots = document.getElementById('dots');
+  for(let i=0;i<total;i++){
+    const d=document.createElement('span'); d.className='dot'+(i===0?' active':''); dots.appendChild(d);
+  }
+  const dotEls = Array.from(dots.children);
+  const activeDot = ()=> {
+    dotEls.forEach(d=>d.classList.remove('active'));
+    dotEls[(index-1+total)%total].classList.add('active');
+  };
+
+  // Navegación
+  const goTo = (i)=>{ index=i; track.style.transition='transform .55s var(--trans)'; setPos(); };
+  const next = ()=> goTo(index+1);
+  const prev = ()=> goTo(index-1);
+
+  document.getElementById('next').addEventListener('click', next);
+  document.getElementById('prev').addEventListener('click', prev);
+
+  // Loop fix en transición
+  track.addEventListener('transitionend', ()=>{
+    const items = track.children;
+    if(items[index].isSameNode(items[items.length-1])){ // estamos en clone del primero
+      track.style.transition='none'; index=1; setPos();
+      void track.offsetWidth; // reflow
+      track.style.transition='transform .55s var(--trans)';
+    }
+    if(items[index].isSameNode(items[0])){ // estamos en clone del último
+      track.style.transition='none'; index=total; setPos();
+      void track.offsetWidth;
+      track.style.transition='transform .55s var(--trans)';
+    }
+    activeDot();
+  });
+
+  // Autoplay 2s con pausa al hover/touch
+  let timer;
+  const start = ()=> timer = setInterval(next, 2000);
+  const stop  = ()=> clearInterval(timer);
+  start();
+
+  const carousel = document.querySelector('.carousel');
+  ['mouseenter','touchstart','focusin'].forEach(ev=>carousel.addEventListener(ev, stop,{passive:true}));
+  ['mouseleave','touchend','focusout'].forEach(ev=>carousel.addEventListener(ev, start,{passive:true}));
+
+  // Deslizar con touch (swipe)
+  let startX=0, dx=0, dragging=false;
+  carousel.addEventListener('pointerdown', (e)=>{dragging=true;startX=e.clientX;stop();});
+  window.addEventListener('pointerup', ()=>{ if(!dragging) return; dragging=false; if(Math.abs(dx)>40){ dx>0?prev():next(); } start(); dx=0; });
+  window.addEventListener('pointermove', (e)=>{ if(!dragging) return; dx=e.clientX-startX; track.style.transform=`translateX(calc(-${index*width()}px + ${dx}px))`; });
+
+</script>
+</body>
+</html>
